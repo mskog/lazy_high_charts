@@ -41,7 +41,7 @@ module LazyHighCharts
         })()
         </script>
         EOJS
-      elsif defined?(Turbolinks) && request.headers["X-XHR-Referer"]
+      else
         graph =<<-EOJS
         <script type="text/javascript">
         (function() {
@@ -50,18 +50,9 @@ module LazyHighCharts
             #{core_js}
           };
           document.addEventListener('page:load', f, true);
-        })()
-        </script>
-        EOJS
-      else
-        graph =<<-EOJS
-        <script type="text/javascript">
-        (function() {
-          var onload = window.onload;
           window.onload = function(){
-            if (typeof onload == "function") onload();
             #{core_js}
-          };
+          }
         })()
         </script>
         EOJS
