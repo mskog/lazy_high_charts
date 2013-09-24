@@ -49,10 +49,10 @@ module LazyHighCharts
             document.removeEventListener('page:load', f, true);
             #{core_js}
           };
-          document.addEventListener('page:load', f, true);
-          window.onload = function(){
+          $(document).on('page:load', f);
+          $(document).ready(function(){
             #{core_js}
-          }
+          })
         })()
         </script>
         EOJS
