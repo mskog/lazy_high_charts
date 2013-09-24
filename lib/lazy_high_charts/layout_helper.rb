@@ -46,12 +46,13 @@ module LazyHighCharts
         <script type="text/javascript">
         (function() {
           var f = function(){
+            document.removeEventListener('page:load', f, true);
             #{core_js}
           };
-          $(document).on('page:load', f);
-          $(document).ready(function(){
+          document.addEventListener('page:load', f, true);
+          window.onload = function(){
             #{core_js}
-          })
+          }
         })()
         </script>
         EOJS
